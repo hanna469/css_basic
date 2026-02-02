@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>CSS start</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- HTML 주석 -->
+    <style>
+        /* css 주석 */
+        /* 선택자 {속성:값; 속성:값;} */
+        body {background-color:rgb(195, 226, 253);}
+        /* 태그 작성 순서와 동일하게 선택자 작성 */
+        /* #wrap {} 아이디 wrap을 가진 대상에 디자인 적용 */
+        #wrap {background-color:#eee;}
+        /* id_wrap 부모 안 h1 선택 */
+        #wrap h1 {background-color:#f5f5f5;}
+        #wrap h1 a {background-color:#ff0; color: #000;}
+        #wrap p {background-color:#ffc;}
+        #wrap .list {background-color:#0cf;}
+        #wrap .list li {background-color: #1fe;}
+        #wrap .list li em {background-color: #fff;}
+        #wrap .list li span {background-color: #fff;}
+        #wrap dl {background-color: #00ff00;}
+        #wrap dl dt {background-color: #f2f03f;}
+        #wrap dl dd {background-color: #ff0084;}
+        /* color 자식 자손 구분 `>` */
+        #wrap .txt p {color:#00ffff}/* 자식+자손에게 컬러 넣기 */
+        #wrap .txt2 >p {color:#ff00ff}/* 자식에게만 컬러 넣기 */
+
+        /* 선택자연습 */
+        #wrap {}
+        #wrap h1 {}
+        #wrap h1 a {}
+        #wrap h1+p {color:red;}
+        #wrap .list {}
+        #wrap .list li {}
+        #wrap .list li em {}
+        #wrap .list li span {}
+        #wrap dl {}
+        #wrap dl dt {}
+        #wrap dl dd {}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h1><a href="#">logo</a></h1>
+        <p>contents</p>
+        <p>contents</p>
+        <ul class="list">
+            <li><em>li1-em</em></li>
+            <li>li2</li>
+            <li><span>li3-span</span></li>
+        </ul>
+        <dl>
+            <dt>title1</dt>
+            <dd>contents</dd>
+            <dt>title2</dt>
+            <dd>contents</dd>
+        </dl>
+        <div class="txt">
+            <p>text1</p>
+            <h1>text2
+                <p>text3</p>
+            </h1>
+        </div>
+        <div class="txt2">
+            <p>text4</p>
+            <h1>text5
+                <p>text6</p>
+            </h1>
+        </div>
+    </div>
+</body>
+</html>

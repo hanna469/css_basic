@@ -1,0 +1,53 @@
+body {}
+#papago {
+    margin:0 auto;
+    /* 가로크기가 화면보다 작은 블록 레이아웃을 가운데로 배치할 때 */
+    /* 좌우가 auto값인 이유 : pc ~ mobile까지 사용자가 접속한 기기에 따라 좌우여백이 다르기 때문에 자동값 사용 */
+    width:402px; height: 874px;
+    background-color: #68BD96;
+    padding: 20px 15px;
+    text-align: center;
+    /* text-align : 적용하는 정렬대상은 inline 특징이 있어야함. */
+    /* text-align : #papago를 가운데로(x) #papago의 자식, 자손을 가운데정렬(O) */
+}
+#papago > * { margin-bottom: 30px;}
+#papago > *:nth-child(1) {background-color: blanchedalmond;}
+/* even : 짝수 odd : 홀수 */
+#papago nav {
+    text-align: left;
+    display: inline-block; /* 내용(자식)만큼 크기 인식 */
+}
+#papago nav a {
+    display: block; /* 부모 너비 100% 자동(기본값) */
+    width:200px; /* 크기px 고정 시 위 기본 100%값은 사라짐 */
+    margin-bottom: 15px; /* 모든 a 적용 여백 */
+}
+#papago nav a:nth-child(3) {margin-bottom: 0;}
+#papago nav a:nth-child(even) {background-color: rgb(149, 184, 81);}
+#papago main {
+    padding: 10px 0;
+    /* display:inline-block; */
+    width:58px;
+    margin: 30px auto;
+}
+#papago main > *{
+    margin-bottom: 20px;
+}
+#papago main >*:nth-child(odd) {background-color: #b1f130;}
+#papago main h1 {}
+#papago main h1 a {}
+#papago main > a {display: block;
+background-color: #fff;}
+#papago main > a:nth-child(4) {margin-bottom: 0;}
+#papago > a {
+    padding: 20px 30px;
+    margin-bottom: 0;
+    background-color: #FF3F3F;
+    border-radius: 30px;
+        display: inline-block;
+
+    
+
+
+}
+

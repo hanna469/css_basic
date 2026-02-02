@@ -1,0 +1,80 @@
+body {}
+.wrap {
+    background-color: #4C4AB0;
+    margin:0 auto;
+    text-align: center;
+    width:402px; height:100vh;
+    padding: 20px 10px;
+}
+.wrap * {color:#fff;}
+.wrap h2, /* 그룹선택자 (,) 기준으로 뒤 선택자 RESET, 부모부터 다시 쓰기 */
+.wrap h3 {
+    font-size:1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.wrap h2 {}
+/* 인접형제선택자를 이용한 p 선택방법 + 그룹(,) */
+.wrap h2+p,
+.wrap h3+p {
+    font-size:0.75rem;
+    margin-bottom: 15px;
+}
+.wrap h2+p em {color:#890000; font-weight: 500;}
+/* 수열선택자를 이용한 p 선택방법 + 그룹(,) */
+/* .wrap p:nth-child(2),
+.wrap p:nth-child(5) {
+    font-size:0.75rem;
+    margin-bottom: 15px;
+} */
+.wrap #content {
+    font-size:1rem;
+    margin:0 0 30px;
+}
+.wrap #content span {
+    background-color: #55EAD6;
+}
+.wrap h3 {}
+
+.wrap h3 p {}
+.wrap .details {
+    font-size:1rem;
+}
+.wrap .details em {color:#fff;}
+
+/*  */
+/* body {}
+.wrap {
+    background-color: #4C4AB0;
+    margin:0 auto;
+    text-align: center;
+    width:402px; height:100vh;
+    padding: 20px 10px;
+    
+}
+.wrap * {
+    
+    color:#fff;
+}
+.wrap p {
+    font-size:0.75rem;
+    margin-bottom: 15px;
+}
+.wrap p em {
+    color:#890000;
+    font-weight: 500;
+}
+.wrap #content {
+    font-size:1rem;
+    margin:0 0 30px;
+}
+.wrap #content span {
+    background-color: #55EAD6;
+}
+.wrap h3 {}
+
+.wrap h3 p {}
+.wrap .d petails {
+    font-size:1rem;
+}
+.wrap .details em {color:#fff;} */
