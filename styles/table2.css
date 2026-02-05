@@ -1,0 +1,33 @@
+body {}
+#phone {}
+#phone #pay {
+    width:1100px;
+    margin:50px auto 0;
+    background-color: #ddff;
+}
+#phone #pay th {padding:15px 0;}
+#phone #pay td {padding:20px 0;}
+#phone #pay thead {
+    border-top:2px solid #000;
+    /* border-right: 0; border-left: 0; */
+    
+}
+#phone #pay thead tr {}
+#phone #pay thead tr:nth-child(1) {border-bottom: 1px dotted #000;}
+#phone #pay thead tr th {
+    font-weight: 500;
+}
+/* #phone #pay thead tr th {width:200px;} */
+#phone #pay thead tr th:nth-child(2) {width:280px;}
+#phone #pay thead tr th img {width:62px;}
+#phone #pay thead tr th p {color:#888; font-size: 0.75rem;}
+#phone #pay thead tr:nth-child(2) {border-bottom:2px solid #888;}
+#phone #pay tbody {}
+#phone #pay tbody tr td {
+    text-align: center;
+    border:1px solid #888;                             
+    border-left: 0; border-right: 0;
+    font-weight: 500;
+}
+#phone #pay tbody tr td em {color:#FF0099; font-weight: 600;}
+#phone #pay tbody tr td em {color:#FF0099; font-weight: 600;}
