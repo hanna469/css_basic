@@ -95,3 +95,17 @@
 * `solid` : 실선 | ㅡ
 * `dotted` : 점선 | . . . 
 * `dashed` : 일자 점선 | - - -
+## form 요소들의 동적인 편의 HTMl+CSS
+### input 입력요소
+* `<input autofocus placeholder="">`
+    * autofocus : 페이지 접속 시 바로 커서 위치 **활성화**
+    * placeholder : 안내메세지 표시
+        * `input::placeholder {}` 안내메세지 디자인
+    * `input:focus {}` 입력칸 활성화 표시 **디자인**
+### button
+* `<button type="button" 이벤트="자바스크립트명령어작성">`
+    * 버튼에 이벤트 작성 시 반드시 type은 button(범용기능)
+    * `onclick=""` : 클릭 시 "명령어" 실행 이벤트
+    * `window.location.href='실행주소'`
+        * (위) `a href="실행주소"`와 동일한 JS 명령어
+    * `button:hover {}` : 버튼에 마우스 올렸을 시 디자인 변경
