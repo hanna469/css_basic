@@ -29,14 +29,21 @@
 ## font
 ### font-family
 * `font-family`:대표글꼴, 후보글꼴1, 후보글꼴2; | 대표 글꼴 문제 발생 시 대체해서 나갈 수 있도록 대기하는 후보 글꼴
-* `font-fanmily`:'나눔고딕','Noto Sans KR',sans-serif; | 나눔고딕>대표글꼴, Noto Sans KR>후보글꼴1, sans-serif>후보글꼴2(산세리프 글꼴 중 가져오도록)
+* `font-family`:'나눔고딕','Noto Sans KR',sans-serif; | 나눔고딕>대표글꼴, Noto Sans KR>후보글꼴1, sans-serif>후보글꼴2(산세리프 글꼴 중 가져오도록)
 ### font-size
 * em 단위는 부모의 크기를 상속받아서 자식의 크기를 함께 인식 | 부모 20em + 자식 10em > 자식 최종 크기 30em
 * rem 단위는 부모 상관없이 나만의 크기를 인식 | 부모 20em 자식 10em > 자식 최종 크기 10em
+* `font-size`: 글자 크기 | 기본 1em = 16px
+### 그 외 font 관련 태그
+* `line-height` : 행간 | 기본 100% = 1.0 150% = 1.5
+* `font-style` : 글자 스타일 | italic = 기울이기
+* `font-weight` : 글자 굵기 | 기본 400 = reguler
+* `text-decoration` : 글자 꾸미기 | underline; = 밑줄
 ### 글꼴 사용 시 주의사항
 * 모든 컴퓨터 기본글꼴(고딕, 궁서, 바탕 등)이 아니라면 반드시 웹글꼴을 사용하여 웹접근성을 높여줘야함.
 * 웹글꼴 연결 순서는 작성한 css보다 반드시 위에 작성
 * 글꼴명이 한글이거나 공백이 포함된 경우 따옴표('/") 붙여서 작성 | '나눔고딕','Noto Sans KR'
+* `@font-face` : css파일에 기입하는 웹글꼴 링크. # 대신 @선택자를 사용함
 ## 자주 사용하는 css 속성 모음
 * `width:0px` : 가로크기 (단위(vw, % 상대크기단위가능) 설정 필)
 * `height:0px` : 세로크기 (단위(vh, % 상대크기단위가능) 설정 필)
@@ -57,10 +64,7 @@
         * `a {display:inline-block;}`
         * 크기와 여백값을 인식
         * 옆으로 나열, 넘치면 자동 줄바꿈됨.
-* `line-height` : 행간 | 기본 100% = 1.0 150% = 1.5
-* `font-size`: 글자 크기 | 기본 1em = 16px
-* `font-weight` : 글자 굵기 | 기본 400 = reguler
-* `margin` : 바깥쪽(형제 사이) 여백(피그마 기준 **간격**)
+    * `margin` : 바깥쪽(형제 사이) 여백(피그마 기준 **간격**)
     * `margin:10px;` : 모든 방향 10 통일
     * `margin:10px 20px;` : 상하/좌우
     * `margin:10px 20px 30px;` : 상/좌우/하
@@ -109,3 +113,30 @@
     * `window.location.href='실행주소'`
         * (위) `a href="실행주소"`와 동일한 JS 명령어
     * `button:hover {}` : 버튼에 마우스 올렸을 시 디자인 변경
+## background
+* `background-size`
+    * `contain` : 요소 안에 배경 이미지가 전부 나타나도록 가로 세로 크기 조정
+    * `cover` : 배경 이미지로 요소의 크기를 모두 덮어 씌우는 형태로 적용
+    * `직접 값 적용` : px / % 로 이미지 크기 직접 적용 px > 절대값 % > 상대값 */
+* `background-repeat`
+    * 화면보다 이미지가 작을 때 | no-repeat : 반복x | repeat-x : 가로축만 반복(y > 세로축만 반복)
+    * background-position: right bottom ;/* x y */
+# 웹글꼴 `<link>`, `@font-face`
+## `<link>` 사용법, 특징
+* `head` 태그 안 `reset.css` 연결보다 위에 작성
+* `@font-face`에 비해 사용이 간편함
+* 작성한 html에서만 사용할 수 있다는 단점이 있음
+## `@font-face` 사용법, 특징
+* `reset.css` 파일 내 가장 위쪽 라인에 작성
+* `@font-face {`
+    ------(필수요소)------
+    * `font-family:'사용할 글꼴 이름 임의작성';`
+    * `src:url(글꼴주소);`
+    ------(선택요소)------
+    * `font-weight:글꼴굵기(200~700 글꼴에 따라 다름);`
+    * `font-style:기울기(normal, italic 등);`
+    * `font-display:swap`;
+    * `}`
+* reset에 한 번 연결해두면 모든 html에서 사용 가능
+* `@font-face {font-family:'사용할 글꼴명'}` (예) 컴퓨터 글꼴 설치 (reset에 작성할 때)
+* `선택자 {font-family:'웹글꼴로 불러온 글꼴명'}` (예) 포토샵 글꼴 사용 (css에 작성할 때)
