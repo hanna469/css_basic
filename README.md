@@ -140,3 +140,16 @@
 * reset에 한 번 연결해두면 모든 html에서 사용 가능
 * `@font-face {font-family:'사용할 글꼴명'}` (예) 컴퓨터 글꼴 설치 (reset에 작성할 때)
 * `선택자 {font-family:'웹글꼴로 불러온 글꼴명'}` (예) 포토샵 글꼴 사용 (css에 작성할 때)
+## CSS 레이아웃 정렬 속성
+### display
+* `display:block` :인라인을 수직으로 나열
+* `display:inline-block` : 블록을 수평으로 나열
+    * 기본 여백 3px 발생 -> 해결법 `margin-right:-3px`
+### margin
+* `margin:상하여백 auto` : 크기가 설정된 블록 또는 인라인을 화면 가운데 배치
+### float
+* `float:left` : 형제 요소들을 왼쪽으로 순차정렬
+* `float:right` : 형제 요소들을 오른쪽으로 순차정렬
+    * 2개 이상 작성 시 역순으로 정렬됨.
+* `float:none` : float 제거
+* `clear:both` : 이전 형제에 작성된 float 정렬 해제
