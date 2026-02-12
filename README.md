@@ -153,3 +153,23 @@
     * 2개 이상 작성 시 역순으로 정렬됨.
 * `float:none` : float 제거
 * `clear:both` : 이전 형제에 작성된 float 정렬 해제
+### position
+* `posirion:relative`
+    *태그의 기존 위치에서 상/하/좌/우 로 약간의 이동이 필요할 때
+    * 자식 또는 자손요소에 absolute가 있어서 부모 기준이 필요할 때
+* `posirion:absolute`
+    * 부모, 형제 요소와 겹치는 디자인 특징이 필요할 때
+    * block요소에 absolute 설정 시 inline-block처럼 너비를 내용만큼 인식함->너비재입력
+    * 부모 후보들(dl,dt)에게 추가 postion 설정 안할 시 body 기준으로 움직임
+    * `dl dt p {position:absolute;}`
+* `z-index`
+    * absolute로 인해 겹쳐진 형제 요소들 사이의 중첩순서가 필요할 때
+    * 0~999 작성가능 (단위작성없이 숫자만 작성)
+    * position 속성이 없으면 z-index 적용 불가
+## 가상 CSS 선택자 ::after, ::before
+* 시각적인 목적으로 디자인 배경, 선 등의 요소가 필요할 때 HTML태그없이 CSS만으로 디자인을 만드는 선택자
+* `부모선택자::after {}` -> 부모의 마지막 자식에 디자인 생성
+* `부모선택자::before {}` -> 부모의 첫 번째 자식에 디자인 생성
+### after, before 사용 시 필수속성
+* `content:'';` -> 내용인식속성, 글자 필요한 디자인이 아닐 경우 '' 빈따옴표
+* `display, background-color, width, height`

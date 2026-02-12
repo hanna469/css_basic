@@ -66,7 +66,7 @@ body {}
 }
 #best_slide_wrap .slide_container .slide:nth-child(odd) {background-color: aqua;}
 #best_slide_wrap .slide_container .slide:nth-child(even) {background-color: beige;}
-#best_slide_wrap .slide_container .slide:nth-child(2) {
+#best_slide_wrap .slide_container .slide:nth-child(3) {
     /* float:none; */
     /* float:none -> float를 모두 해제함 */
     clear:both;
