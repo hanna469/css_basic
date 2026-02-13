@@ -173,3 +173,16 @@
 ### after, before 사용 시 필수속성
 * `content:'';` -> 내용인식속성, 글자 필요한 디자인이 아닐 경우 '' 빈따옴표
 * `display, background-color, width, height`
+## 계산기 함수 `clac()`
+* +,-,*,/,% 다양한 사칙연산 사용 가능
+* 추가 괄호를 통한 복잡한 계산 가능
+**연산자 앞 뒤 여백 필수** `1+1(X)` `1 + 1(O)`
+* `width, height, margin, padding` 등 숫자 입력 속성 활용 가능
+### calc() 활용 예시
+* `li {width:calc(100% / 4);}`
+    * 4개의 li를 같은 쿠기로 나누기
+* `li {width:calc((100% - 30px) / 4);}`
+    * 4개의 li에 각 10px 씩 사이여백을 주기 위해 전체 부모 100% 너비 중 10*3 총 30px을 빼고 나머지 값을 4로 나누기
+    * `li {width:calc((100% - (10px * 3)) / 4);}`
+* `a {display:block; height:calc(100% - 50px);}`
+    * a의 크기를 인식하게 만들고 50px을 뺀 나머지 부모크기 주기
