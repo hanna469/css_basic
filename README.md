@@ -121,6 +121,9 @@
 * `background-repeat`
     * 화면보다 이미지가 작을 때 | no-repeat : 반복x | repeat-x : 가로축만 반복(y > 세로축만 반복)
     * background-position: right bottom ;/* x y */
+* `background-attachment`
+    * 스크롤에 따라 배경 고정유무 | 기본값 `scroll` | 고정 `fixed`
+    * 공통 적용 시 한 번에 | 개별 적용 시 수열선택자 사용하여 각자 적용
 # 웹글꼴 `<link>`, `@font-face`
 ## `<link>` 사용법, 특징
 * `head` 태그 안 `reset.css` 연결보다 위에 작성
@@ -180,7 +183,7 @@
 * `width, height, margin, padding` 등 숫자 입력 속성 활용 가능
 ### calc() 활용 예시
 * `li {width:calc(100% / 4);}`
-    * 4개의 li를 같은 쿠기로 나누기
+    * 4개의 li를 같은 크기로 나누기
 * `li {width:calc((100% - 30px) / 4);}`
     * 4개의 li에 각 10px 씩 사이여백을 주기 위해 전체 부모 100% 너비 중 10*3 총 30px을 빼고 나머지 값을 4로 나누기
     * `li {width:calc((100% - (10px * 3)) / 4);}`
@@ -222,3 +225,16 @@
     * `flex-start, flex-end, center` 위 메인축과 뜻 동일
 * `align-content:` 교차축이 2줄 이상일 때
     * `flex-start, flex-end, center, space-between, space-around` 위 메인축과 뜻 동일, 값 동일
+## 스크롤바 디자인
+* Firefox
+`html {scrollbar-width: 10px;;scrollbar-color: #222 #e73b3b;}`
+* Opera
+`html::-o-scrollbar {width: 10px;}`
+`html::-o-scrollbar-thumb {background-color: #222;border-radius: 5px;}`
+* Chrome, Safari, Edge 등 웹킷 기반 브라우저
+`::-webkit-scrollbar {width: 10px;}`
+`::-webkit-scrollbar-track {box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);}`
+`::-webkit-scrollbar-thumb {background-color: #222;border-radius: 5px;}`
+### 
+* transition:애니메이션 적용속성 지속시간 딜레이;
+* 기존 속성에 작성
