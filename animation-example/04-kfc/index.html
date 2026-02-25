@@ -16,17 +16,37 @@
             background:#fff; border-radius:50px; text-align:center; padding:20px 0;
             display:inline-block; margin-top:50px; font-weight:600;
             width:200px; color:#000;
+            transition: color 0.2s, width 0.5s, box-shadow 0.4s;
+        }
+        main .txt #order:hover {
+            color:#da1e27; width:250px; box-shadow: 0 0 10px rgba(255,255,255,0.8);
+            
         }
         #sns {position:absolute; left:0; bottom:100px;}
         #sns a {
             display:inline-block; width:40px; margin:0 10px;
             position:relative; top:0;
+            transition: transform 0.5s;
+        }
+        #sns a:hover {
+            transform: translateY(-20px);
         }
         #sns a img {width:100%;}
         #dynamic #btn {display:flex; position:absolute; right:0; bottom:100px;}
         #dynamic #btn a {margin:0 5px;}
-        #dynamic #btn a#prev {}
-        #dynamic #btn a#next {}
+        #dynamic #btn a#prev { }
+        #dynamic #btn a#next {transform: scaleX(-1);}
+        #dynamic #img {
+            position: relative;
+            width:668px; height:596px;
+        }
+        #dynamic #img img {
+            position: absolute;
+        }
+        #dynamic #img #big1 {}
+        #dynamic #img #big2 {display: none;}
+        #dynamic #btn:hover + #img #big1 {display: none;}
+        #dynamic #btn:hover + #img #big2 {display: block;}
     </style>
     <script>
         window.onload=function(){
@@ -50,12 +70,13 @@
                 <a href="#"><img src="images/instagram.png" alt=""></a>
             </div>
             <div id="dynamic">
-                <div id="img">
-                    <img src="images/menu1.png" alt="" id="big">
-                </div>
                 <div id="btn">
                     <a href="#" id="prev"><img src="images/prev_next.png" alt=""></a>
                     <a href="#" id="next"><img src="images/prev_next.png" alt=""></a>
+                </div>
+                <div id="img">
+                    <img src="images/menu1.png" alt="" id="big1">
+                    <img src="images/menu3.png" alt="" id="big2">
                 </div>
             </div>
         </main>

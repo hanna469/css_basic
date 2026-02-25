@@ -113,6 +113,21 @@
     * `window.location.href='실행주소'`
         * (위) `a href="실행주소"`와 동일한 JS 명령어
     * `button:hover {}` : 버튼에 마우스 올렸을 시 디자인 변경
+### hover
+* 선택자 뒤에 :hover로 마우스 올렸을 때의 디자인 변경 가능
+    * `button:hover {}`
+    * `#ordef:hover {}` id,class 로도 사용 가능
+* 선택자:hover 자식 : 부모에 마우스 올렸을 때 자식 디자인 변경
+    * `button:hover p {}`
+    * `button:hover #img{}`
+* hover는 다음 형제만 잡을 수 있고, 이전 형제는 적용불가
+    * div>h2+p 일 때 h2:hover로 p 디자인 적용 가능 | p:hover로 h2 디자인 적용 불가
+* 선택자1:hover ~/+ 형제선택자2 자식 : 선택자1에 마우스 올렸을 때 선택자1의 다음 형제 중 선택자2의 자식에게 디자인 적용
+    * `div#btn>a#prev+a#next` `div#something>a+p` `div#img>img#big1+img#big2`
+    * `#btn:hover ~ #img #big1 {}` O
+    * `#btn:hover + #something {}` O
+    * `#btn:hover + #img #big1 {}` X
+    * 형제 선택자 +는 가장 인접한 형제 1개만 선택 | ~ 는 다음 형제들 전부 선택 가능 (1-2-3-4 가 있을 때 1 ~ 3 으로 2-3-4 중 3의 형제를 잡음)
 ## background
 * `background-size`
     * `contain` : 요소 안에 배경 이미지가 전부 나타나도록 가로 세로 크기 조정
@@ -162,9 +177,16 @@
     * 자식 또는 자손요소에 absolute가 있어서 부모 기준이 필요할 때
 * `posirion:absolute`
     * 부모, 형제 요소와 겹치는 디자인 특징이 필요할 때
-    * block요소에 absolute 설정 시 inline-block처럼 너비를 내용만큼 인식함->너비재입력
+    * block요소에 absolute 설정 시 inline-block처럼 너비를 내용만큼 인식함->**너비재입력**
     * 부모 후보들(dl,dt)에게 추가 postion 설정 안할 시 body 기준으로 움직임
     * `dl dt p {position:absolute;}`
+* `posirion:fixed`
+    * 처음부터 화면에 고정 시킬 때 사용
+    * fixed 에서도 z-index 사용 필요
+* `position: sticky`
+    * 스크롤이동과 함께 특정 위치에 닿으면 고정
+    * sticky 주의점 : sticky 적용대상의 부모가 전체 웹사이트 높이와 같아야함(body 또는 #wrap 등)
+    * marign으로 처음 위치 설정/ top 위치에 닿으면 그때부터 고정
 * `z-index`
     * absolute로 인해 겹쳐진 형제 요소들 사이의 중첩순서가 필요할 때
     * 0~999 작성가능 (단위작성없이 숫자만 작성)
@@ -235,6 +257,51 @@
 `::-webkit-scrollbar {width: 10px;}`
 `::-webkit-scrollbar-track {box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);}`
 `::-webkit-scrollbar-thumb {background-color: #222;border-radius: 5px;}`
-### 
+## transition
 * transition:애니메이션 적용속성 지속시간 딜레이;
 * 기존 속성에 작성
+* `:hover` 선택자로 인해 기존속성에서 다른속성으로 변경되는 css에 애니메이션을 주고 싶을 때
+    * `선택자{color:#000; font-size:1rem;}`
+    * `선택자:hover{color:#FFF;}`
+    * 위 선택자 예시) color만 hover 시 변경됨
+    * 아래 연결 동작) 변경된 color만 transition 적용.
+    * `선택자 {color:#000; font-size:1rem; transition:color 1s;}`
+    * 문법 : `transition:변경속성 지속시간 속도 지연시간`
+    * `transition:color 1s linear 2s`
+    * 2초 기다린 뒤 1초동안 일정속도로 color 속성에 애니메이션 적용
+## animation + @keyframe
+* both:끝나는 지점에서 멈추게 해줌
+### 적용 순서
+1. `@keyframes 애니메이션이름 {적용분기}`
+2. `선택자 {animation:키프레임애니메이션이름 추가속성}`
+### 개념 및 주의사항
+* `hover + transition`은 사용자의 키보드, 마우스 동작에 따라 나타나는 애니메이션
+* `keyframes + animation`은 페이지로딩 시 등장 애니메이션, 스크롤 내릴 시 나타나는 컨텐츠의 등장 애니메이션 등에 사용함. (사용자 hover 동작과 대부분 관계없음)
+### 명령 해석
+* `@keyframes a {0% {opacity:0;} 100% {opacity:1;}}`
+    * 애니메이션이름 a 생성 후 안 보이다가 보이는 애니메이션
+* `선택자 {animation:a 1s ease 0.5s alternate 3;}`
+    * 특정 선택자에 0.5초 기다린 뒤 1초동안 a 애니메이션을 ease 가속도로 정방향->역방향 순서로 3번 재생함
+* 통합순서 | `animation:name duration timing-function delay iteration-count direction fill-mode`
+    * `name`: 가져올키프레임
+    * `duration`: 지속 시간(1회 기준)
+    * `timing-function`: 애니메이션 가속도 설정 liner / ease(기본값) / ease-in / ease-out / ease-in-out
+    * `delay`: 애니메이션 시작 전 지연속도 설정
+    * `iteration-count` : 반복 횟수 | 단위 없이 숫자로 입력, 무한 설정 시 `infinite`
+    * `direction` : 애니메이션 재생 방법 | 기본 `normal` 역방향 `reverse` 정->역->정방향 `alternate` 역->정->역 `alternate-reverse`
+    * `fill-mide` : 애니메이션이 시작 전 또는 종료 후 어떤 값이 적용될지 지정
+## transform
+* transition, animation 속성과 함께 특이한 애니메이션에 자주 활용하는 변형속성
+* scale()크기, rotate(deg)회전, skew(deg) 기울기, translate()이동 기능이 있음
+* 속성 사이는 공백으로 구분함
+* `transform:scale(1)` 비율 기준 1 == 100%
+* `transform:rotate(20deg)` 시계방향-> 양수 | 반시계방향 -> 음수 | 한 바퀴 기준 `360deg`
+* `transform:skew(-20deg);` rotate와 동일
+* `transform:translate(10px, 20px);` x, y 이동 순서로 작성
+* 중심축(center) 기준으로 움직임
+* 다른 모든 속성은 중심이 왼쪽 상단, **transform만 유일하게 가운데가 기준점**
+* `transform-origin:x y` : 기준 축 변경 | right top , center bottom 등
+* `transform: scaleX(-1)` : 좌우반전
+## box-shadow
+* 주변 그림자 처리 | x y 흐림정도 색상; 작성
+# html {scroll-behavior:smooth;} : 스크롤 부드럽게 움직이게 할 때

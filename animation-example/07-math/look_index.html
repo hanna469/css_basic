@@ -22,35 +22,50 @@
         main #visual {background:#26bad7; min-width:1200px; margin:0 auto; height:550px; position:relative;}
         main #visual #deco {position:relative; width:1200px; margin:0 auto;}
         main #visual #deco .obj {position:absolute;}
-
+        /* 선 */
         main #visual #deco .obj1 {
-            top:170px; left:50%; margin-left:-342px;
+            top:170px; left:50%; margin-left:-342px; animation: rotate 10s linear alternate infinite;
         }
+        /* 왼쪽 상단 별 */
         main #visual #deco .obj2 {
             left:0; top:150px;
         }
+        /* 왼쪽 첨성대 */
         main #visual #deco .obj3 {
             left:100px; top:250px;
         }
+        /* 왼쪽 하단 별 */
         main #visual #deco .obj4 {
             left:150px; top:350px;
         }
+        /* 오른쪽 기와집 */
         main #visual #deco .obj5 {
             right:0; top:150px;
         }
+        /* 오른쪽 돌하르방 */
         main #visual #deco .obj6 {
             right:200px; top:250px;
         }
+        /* 오른쪽 돌하르방 옆 별 */
         main #visual #deco .obj7 {
             right:200px; top:240px;
         }
+        /* 왼쪽 경복궁 */
         main #visual #deco .obj8 {
-            left:270px; top:440px;
+            left:270px; top:440px; 
         }
+        /* 오른쪽 하단 별 */
         main #visual #deco .obj9 {
             right:0; top:440px;
         }
-
+        main #visual #deco .obj2,
+        main #visual #deco .obj4,
+        main #visual #deco .obj7,
+        main #visual #deco .obj9 {animation: scale 4s linear alternate infinite;}
+        main #visual #deco .obj3,
+        main #visual #deco .obj6 {animation: rotate 5s linear alternate infinite;}
+        main #visual #deco .obj5,
+        main #visual #deco .obj8 {animation: rotate 5s linear alternate-reverse infinite;}
         main #book_center {
             position:absolute; 
             left:50%; bottom:-50px; margin-left:-181px;
@@ -69,7 +84,16 @@
         main .category a.active {background:#26bad7; color:#fff;}
 
         /* 애니메이션 */
-
+        /* 그 외 오브젝트 */
+        @keyframes rotate {
+            0% {transform:rotate(0deg);}
+            100% {transform:rotate(20deg);}
+        }
+        /* 별 */
+        @keyframes scale {
+            0% {transform:scale(1);}
+            100% {transform:scale(1.2);}
+        }
     </style>
 </head>
 <body>

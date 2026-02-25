@@ -35,16 +35,48 @@
         /* 
         1(주황선) 2(책) 3(문어) 4(벌) 5(꽃병) 6(별1) 7(별2)
         */
-        main #deco .obj1 {z-index:9; right:0;}
-        main #deco .obj2 {z-index:10; top:-100px; left:-50px;}
-        main #deco .obj3 {z-index:9; right:190px; top:0;}
-        main #deco .obj4 {z-index:11; right:0; bottom:0;}
-        main #deco .obj5 {z-index:11; right:150px; bottom:0;}
-        main #deco .obj6 {z-index:12; left:-50px; bottom:100px;}
+        main #deco .obj1 {
+            /* animation: 키프레임이름 지속시간 딜레이 재생방법 종료방법 반복방법; */
+            animation:y 1s linear alternate infinite;
+            z-index:9; right:0;}
+        main #deco .obj2 {animation:book 1s both; z-index:10; top:-100px; left:-50px;}
+        /* obj3 애니메이션 해석 : 1s 기다렸다가 0.5s 동안 재생하기 */
+        main #deco .obj3 {animation:octopus 0.5s 1s both; z-index:9; right:190px; top:0;}
+        main #deco .obj4 {animation:bee 0.8s both; z-index:11; right:0; bottom:0;}
+        main #deco .obj5 {animation:flower 0.8s linear alternate infinite; z-index:11; right:150px; bottom:0;}
+        main #deco .obj6 { z-index:12; left:-50px; bottom:100px;}
         main #deco .obj7 {z-index:12; right:50px; top:-30px;}
+        main #deco .obj6,
+        main #deco .obj7 {animation:star 1s ease-in-out alternate infinite;}
+
         
         /* 애니메이션 */
-        
+        @keyframes y {
+            0% {transform: rotate(-10deg);}
+            100% {transform: rotate(10deg);}
+        }
+        @keyframes book {
+            from {left:50px;}
+            to {left:-50px;}
+        }
+        @keyframes octopus {
+            from {top:0;}
+            to {top:-135px;}
+        }
+        @keyframes bee {
+            0% {transform: translate(0, 0) rotate(0);}
+            100% {transform: translate(-300px, 150px) rotate(60deg);}
+        }
+        /* 오른쪽, 아래 +/
+        /* 오른쪽, 아래- */
+        @keyframes flower {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(10deg);}
+        }
+        @keyframes star {
+            0% {transform: scale(1);}
+            100% {transform: scale(1.2);}
+        }
 
     </style>
 </head>
@@ -67,7 +99,7 @@
                         <span class="bar"></span>
                         <span class="btn play"><img src="images4/ico-play.png" alt=""></span>
                         <span class="btn left"><img src="images4/ico-left3.png" alt=""></span>
-                        <span class="btn right"><img src="images4/ico-right3.png" alt=""></span>
+                        <span class="btn right"><img src="image s4/ico-right3.png" alt=""></span>
                     </div> -->
                 </div>
                 <div id="deco">

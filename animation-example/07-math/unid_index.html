@@ -60,17 +60,34 @@
             width:1200px; height:100vh; margin: 0 auto;
             display:flex; justify-content: space-between; align-items:center;
         }
-        main .center h1 {color:#fff; display:flex; flex-flow:column nowrap; justify-content: space-between;}
-        main .center h1 span {font-size:3.5rem; letter-spacing:-2.5px; padding:10px 0;}
+        main .center h1 {display:flex; flex-flow:column nowrap; justify-content: space-between;}
+        main .center h1 span {opacity: 0; color:#fff; font-size:3.5rem; letter-spacing:-2.5px; padding:10px 0;}
+            main .center h1 span:first-child {animation: fade 0.5s both;}
+            main .center h1 span:last-child {animation: fade 0.5s 0.5s both;}
         main .center .right {
             position:relative; right:174px; top:-100px;
+            animation: fade2 1s both;
         }
         main .center .right span {
             position:absolute; width:174px; height:174px;
+            
         }
-        main .center .right span:nth-child(1) {}
-        main .center .right span:nth-child(2) {text-align:center; line-height:174px;}
+        main .center .right span:nth-child(1) {animation: rotate 15s linear alternate infinite;}
+        main .center .right span:nth-child(2) {
+            text-align:center; line-height:174px;}
         /* animation */
+        @keyframes fade {
+            0%{opacity:0; transform: translateY(60px);}
+            100%{opacity:1; transform: translateY(-40px);}
+        }
+        @keyframes fade2 {
+            0%{opacity:0; transform: translateX(100px);}
+            100%{opacity:1; transform: translateX(0px);}
+        }
+        @keyframes rotate {
+            0%{transform: rotate(0deg);}
+            100%{transform: rotate(360deg);}
+        }
     </style>
 </head>
 <body>
