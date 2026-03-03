@@ -121,7 +121,7 @@
     * `button:hover p {}`
     * `button:hover #img{}`
 * hover는 다음 형제만 잡을 수 있고, 이전 형제는 적용불가
-    * div>h2+p 일 때 h2:hover로 p 디자인 적용 가능 | p:hover로 h2 디자인 적용 불가
+    * div>h2+p 일 때 h2:hover로 p의 자식에 디자인 적용 가능 | p:hover로 h2의 자식에 디자인 적용 불가
 * 선택자1:hover ~/+ 형제선택자2 자식 : 선택자1에 마우스 올렸을 때 선택자1의 다음 형제 중 선택자2의 자식에게 디자인 적용
     * `div#btn>a#prev+a#next` `div#something>a+p` `div#img>img#big1+img#big2`
     * `#btn:hover ~ #img #big1 {}` O
@@ -248,6 +248,7 @@
 * `align-content:` 교차축이 2줄 이상일 때
     * `flex-start, flex-end, center, space-between, space-around` 위 메인축과 뜻 동일, 값 동일
 ## 스크롤바 디자인
+* 스크롤바 색상, 모서리 둥글게 등
 * Firefox
 `html {scrollbar-width: 10px;;scrollbar-color: #222 #e73b3b;}`
 * Opera
@@ -257,8 +258,14 @@
 `::-webkit-scrollbar {width: 10px;}`
 `::-webkit-scrollbar-track {box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);}`
 `::-webkit-scrollbar-thumb {background-color: #222;border-radius: 5px;}`
+## 백그라운드 색상 글자 마스킹
+* 글자 안에서 그라데이션 효과 및 배경이미지를 마스크씌워서 보여주고 싶을 때 사용하는 속성값 모음
+* `-webkit-background-clip: text;`
+    `-webkit-text-fill-color: transparent;`
+    `background-clip: text;`
+    `color: transparent;`
 ## transition
-* transition:애니메이션 적용속성 지속시간 딜레이;
+* transition:애니메이션적용속성 지속시간 딜레이;
 * 기존 속성에 작성
 * `:hover` 선택자로 인해 기존속성에서 다른속성으로 변경되는 css에 애니메이션을 주고 싶을 때
     * `선택자{color:#000; font-size:1rem;}`
@@ -269,6 +276,7 @@
     * 문법 : `transition:변경속성 지속시간 속도 지연시간`
     * `transition:color 1s linear 2s`
     * 2초 기다린 뒤 1초동안 일정속도로 color 속성에 애니메이션 적용
+    * 모든 범위 지정 시 `all`로 속성 입력
 ## animation + @keyframe
 * both:끝나는 지점에서 멈추게 해줌
 ### 적용 순서
@@ -304,4 +312,14 @@
 * `transform: scaleX(-1)` : 좌우반전
 ## box-shadow
 * 주변 그림자 처리 | x y 흐림정도 색상; 작성
-# html {scroll-behavior:smooth;} : 스크롤 부드럽게 움직이게 할 때
+## html {scroll-behavior:smooth;} : 스크롤 부드럽게 움직이게 할 때
+# 반응형 표준 디바이스 크기(w)
+* 320 이상일 때 해당 디바이스에 맞는 모습으로 재배열함.
+* 320 ~ (모바일 최소기준 | 아이폰 5)
+* 480 ~
+* 760 ~ (태블릿)
+* 960 ~
+* 1200 ~ (데스크탑)
+* 1600 ~
+# 반응형 배경값 설정
+* `@media print { body,html (background:white)}`

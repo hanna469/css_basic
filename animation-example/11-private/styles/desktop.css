@@ -6,11 +6,12 @@ header {
     align-items:center; z-index:999;
     position:fixed; left:50%; top:0; margin-left:-700px;
 }
-header nav a {margin:0 7px;}
+header nav a {margin:0 7px; color:#fff;}
 header .right a {
     position:relative; padding:5px 5px 5px 27px;
     border:1px dashed rgba(255,255,255,0.6); 
     font-size:0.875rem; border-radius:3px;
+    color:#fff;
 }
 header .right a::before {
     content:''; display:block;
@@ -29,6 +30,21 @@ main {
     top: 80px;
     text-align: center;
 }
+main::before {
+    left:0;  
+    background: linear-gradient(90deg, rgb(9,13,43), transparent);
+}
+main::after {
+    right:0;
+    background: linear-gradient(-90deg, rgb(9,13,43), transparent);
+}
+main::before, main::after {
+    content:''; display: block; /* befoter, after 가상요소 ★필수속성 */
+    position:absolute; /* 형제랑 겹치는 위치 속성 */
+    width:20%; height:100%; /* 부모에 상대적인 크기 */
+    z-index: 900; /* 형제와 겹치는 중첩순서 */
+    top:0; /* 좌표 설정 */
+}
 main > * {max-width:1400px; margin:0 auto;}
 /* 중첩순서 처리 배경(10) 그라디언트(20) 나머지(30) */
 main .bg_wrap {position:absolute; z-index:10;}
@@ -40,24 +56,56 @@ main .bg_wrap .bg {width:1400px; margin:0 auto;}
 main .bg_wrap .bg1 {
     height:100px; 
     background:url(../images/bg_cloud.png) repeat-x;
+    animation:bg_pst 180s reverse linear infinite;
 }
 main .bg_wrap .bg2 {
     height:200px; 
     background:url(../images/bg_city1.png) repeat-x;
+    animation:bg_pst 50s reverse linear infinite;
 }
 main .bg_wrap .bg3 {
     height:100px; position:relative; top:-96px;
     background:url(../images/bg_city2.png) repeat-x;
+    animation:bg_pst 20s reverse linear infinite;
 }
 /* 메인제목 */
 main .txt {}
 /* 메인 자동차 위 리스트3 */
 /* 메인 자동차 */
-main .car {margin-top:150px; text-align:center; width:600px;}
+main .car {margin-top:150px; text-align:center; width:600px; animation:x500 1s both }
 main .car #car {width:100%;}
 main .car #left_tire, main .car #right_tire {
     position:absolute; bottom:25px; width:67px;
+    animation: rotate360 1s linear infinite;
 }
 main .car #left_tire {left:102px;}
 main .car #right_tire {right:91px;}
 
+main .scroll {animation: updown 1.5s linear alternate infinite;}
+/* footer {
+    height:200px; color:#fff;
+    background: linear-gradient(40deg, purple, transparent, brown, black ,rgba(255,255,255,0.5));
+} */
+
+@keyframes bg_pst {
+    0% {background-position-x: 0;}
+    100% {background-position-x: -2500px;}
+}
+/* position:; 요소 이동 */
+/* background-position:; 요소 고정, 요소 안 배경이미지 이동 */
+/* background-position:x y; */
+
+@keyframes rotate360 {
+    0% {rotate:0;}
+    100%{rotate:360deg;}
+}
+
+@keyframes x500 {
+    0% {transform: translateX(500px); opacity: 0;}
+    100% {transform: translateX(0px); opacity:1;}
+}
+
+@keyframes updown {
+    0% {transform: translateY(-10px);}
+    100% {transform: translateY(0px);}
+}

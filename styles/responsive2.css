@@ -1,0 +1,45 @@
+/* mobile -> pc 점점 크게 */
+#wrap {
+    margin: 0 auto;
+    padding: 0 15px;
+    min-width: 320px;
+    max-width: 1440px;
+    background:lightblue;
+}
+#wrap > * {
+    border: 1px solid #000;
+}
+#wrap header {
+    height:60px;
+    display: flex; flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+#wrap header h1 {}
+#wrap header nav {}
+#wrap main {
+    
+}
+#wrap main section {
+    line-height:400px;
+    text-align: center;
+    background:linear-gradient(30deg, pink, lightcoral)
+}
+#wrap main section:nth-child(1) {}
+#wrap main section:nth-child(2) {}
+#wrap footer {
+    line-height:100px; /* 요소가 한줄일때만 */
+    text-align: center;
+}
+/* ==============================================반응형웹규칙시작 */
+@media screen and (min-width:480px) { /* 480 이상일 때 */
+    #wrap {padding: 0 30px;}
+    #wrap main {display: flex; flex-flow: row nowrap;}
+    #wrap main section {width: 50%;}
+} /* 480~819 */
+@media screen and (min-width:820px) {
+    #wrap header {
+        flex-flow: column nowrap;
+        justify-content: center;
+    }
+} /* 820~1440 */

@@ -1,0 +1,63 @@
+#wrap {
+    border:1px solid #000;
+}
+#wrap > * {
+    max-width:1300px;
+    /* 최대 1300까지만 커지고 그 이하는 자동 가변형(%) */
+    min-width: 320px;
+    /* 전체 범위값 중 가장큰값 & 가장작은값은 미리 세팅하기 */
+    margin: 0 auto;
+    display: flex; flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+#wrap header {
+    background: aqua;
+    height:80px;
+}
+#wrap main {
+    background: linear-gradient(thistle, teal, thistle);
+    height:300vh;
+}
+#wrap footer {
+    background: yellow;
+    height:120px;
+}
+
+/* 반응형 웹 설정 */
+/* 1. 설계방향 모바일 -> PC 점점 크게(min-width) */
+/* 2. 설계방향 PC -> 모바일 점점 작게(max-width) */
+/* @keyframes 애니메이션 이름 {애니메이션 규칙} -> animation */
+/* @media screen and (규칙) {실행명령어} */
+/* @media screen and (w320~) {320이상일 때 재배열 명령어} */
+/* @media screen and (w760~) {760이상일 때 재배열 명령어} */
+/* media 규칙괄호 안에는 세미콜론(;) 금지 */
+/* 반응형 제작 주의사항 */
+/* 1. @media 규칙선언 전 기존CSS에서 유지하고 싶은건 쓰지않기 */
+/* 2. @media 규칙선언 후 재배열하고 싶은 CSS는 반드시 [기존CSS에서 선택자-값 확인] 후 [동일 선택자-동일속성으로 값만 바꿔서 입력]하기 */
+@media screen and (max-width:1299px) {/* 1299 이하일 때 */
+    /* {} 중괄호 안 선택자와 값들을 실행 */
+    #wrap > * {
+        flex-flow: column nowrap;
+        font-size: 2rem;
+    }
+    #wrap header {background: lightgreen;}
+    #wrap main {background:linear-gradient(gray, white, gray);}
+    #wrap footer {background-color: thistle;}
+} /* 801~1299 */
+/* 새로운 규칙은 기존 규칙 바깥에서! */
+@media screen and (max-width:800px) {
+    #wrap > * {
+        align-items: flex-end;
+    }
+} /* ~800 */
+@media screen and (max-width:720px) {
+    #wrap {display: flex; flex-flow: row wrap;}
+    #wrap > * {
+        max-width:100%; min-width:min-content;
+    }
+    #wrap header {width:200px; height:100vh;}
+    #wrap main {width:calc(100% - 200px); height:100vh;}
+    #wrap footer {width:100%;}
+} /* 320~720 */
